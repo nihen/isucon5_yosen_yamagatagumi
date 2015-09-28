@@ -5,7 +5,7 @@
 <div class="row panel panel-primary" id="friends">
   <dl>
     : for $friends -> $friend {
-    <dt class="friend-date"><: $friend.created_at :></dt><dd class="friend-friend"><a href="/profile/<: $friend['account_name'] :>"><: $friend['nick_name'] :></a></dd>
+    <dt class="friend-date"><: $friend.created_at :></dt><dd class="friend-friend"><a href="/profile/<: $friend.user.account_name :>"><: $friend.user.nick_name :></a></dd>
     : }
   </dl>
 </div>

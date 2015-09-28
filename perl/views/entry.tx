@@ -17,7 +17,7 @@
 <div class="row panel panel-primary" id="entry-comments">
   : for $comments -> $comment {
   <div class="comment">
-    <div class="comment-owner"><a href="/profile/<: ($comment['account_name']) :>"><: ($comment['nick_name']) :>さん</a></div>
+    <div class="comment-owner"><a href="/profile/<: ($comment.user.account_name) :>"><: ($comment.user.nick_name) :>さん</a></div>
     <div class="comment-comment">
       : for $comment['comment'].split('\n') -> $line {
       <: ($line) :><br />

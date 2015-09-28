@@ -1,0 +1,19 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+chdir '/home/isucon/webapp/perl';
+
+$ENV{LANG} = 'C';
+
+open STDERR, '>&STDOUT'; $| = 1;
+exec(
+    'setuidgid',
+    'isucon',
+    '/home/isucon/.local/perl/bin/carton',
+    'exec',
+    '--',
+    'gearmand',
+    '--port=3010',
+    '--wakeup=10',
+);

@@ -33,7 +33,7 @@
     <div id="footprints">
       <ul class="list-group">
         : for $footprints -> $fp {
-        <li class="list-group-item footprints-footprint"><: ($fp['updated']) :>: <a href="/profile/<: ($fp['account_name']) :>"><: ($fp['nick_name']) :>さん</a>
+        <li class="list-group-item footprints-footprint"><: ($fp.print_datetime) :>: <a href="/profile/<: ($fp.user.account_name) :>"><: ($fp.user.nick_name) :>さん</a>
         : }
       </ul>
     </div>
@@ -62,7 +62,7 @@
     : for $entries_of_friends -> $entry {
     <div class="friend-entry">
       <ul class="list-group">
-        <li class="list-group-item entry-owner"><a href="/diary/entries/<: ($entry['account_name']) :>"><: ($entry['nick_name']) :>さん</a>:
+        <li class="list-group-item entry-owner"><a href="/diary/entries/<: ($entry.user.account_name) :>"><: ($entry.user.nick_name) :>さん</a>:
         <li class="list-group-item entry-title"><a href="/diary/entry/<: ($entry['id']) :>"><: $entry['title'] :></a>
         <li class="list-group-item entry-created-at">投稿時刻:<: ($entry['created_at']) :>
       </ul>
@@ -78,8 +78,8 @@
     <div class="friend-comment">
       <ul class="list-group">
         <li class="list-group-item comment-from-to">
-          <a href="/profile/<: ($comment['account_name']) :>"><: ($comment['nick_name']) :>さん</a>から
-          <a href="/profile/<: $comment.entry.account_name :>"><: $comment.entry.nick_name :>さん</a>へのコメント:
+          <a href="/profile/<: ($comment.comment_user.account_name) :>"><: ($comment.comment_user.nick_name) :>さん</a>から
+          <a href="/profile/<: $comment.entry_user.account_name :>"><: $comment.entry_user.nick_name :>さん</a>へのコメント:
         <li class="list-group-item comment-comment"><: $comment['comment'].length() > 30 ? $comment.comment.substr(0, 27) ~ '...' : $comment['comment'] :>
         <li class="list-group-item comment-created-at">投稿時刻:<: ($comment['created_at']) :>
       </ul>
